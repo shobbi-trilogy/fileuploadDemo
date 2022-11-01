@@ -1,0 +1,31 @@
+<!-- Loop over each object in the projects array -->
+<div class="row mb-4 project">
+  <h4>Uploading files, storing, reading, downloading files using Sequelize BLOB column</h4>
+  <form action="/uploadFileDB" method="post" enctype="multipart/form-data" >
+    <div class="form-group">
+      <input type="file" class="form-control-file" name="avatarDB">
+      <input type="text" class="form-control" placeholder="Comment" name="comment">
+      <input type="submit" value="Upload & Save to DB!" class="btn btn-default">            
+    </div>
+  </form>
+</div>
+{{#each files as |file| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h5>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="{{file.name}}">{{file.originalname}}</a>
+      {{#if file.image}}
+        <img src="data:image/jpeg;base64,{{file.image}}" width="100px" alt="{{file.comment}}"/>
+      {{else}}
+        <img src="{{file.name}}" width="100px" alt="{{file.comment}}"/>
+      {{/if}}
+    </h5>
+  </div>
+  <div class="col-md-7">
+  </div>
+</div>
+{{/each}}
+
+
